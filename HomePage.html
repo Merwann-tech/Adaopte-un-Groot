@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Adaopte un Groot</title>
-  </head>
-  <body>
-    <nav class="bg-[#fffaf7]">
-      <div
-        class="container mx-auto flex justify-between items-center py-3 px-6"
-      >
-        <div class="flex items-center space-x-2 text-3xl">
-          <span class="text-2x1">🐾</span>
-          <span class="font-bold text-x1">
-            Ada<span class="text-[#e26d47]">opte</span>
-          </span>
-        </div>
+</head>
 
-        <div class="hidden md:flex items-center space-x-8">
-          <div class="flex items-center space-x-2">
-            <img src="Icons/house.svg" alt="house" />
-            <span>Accueil</span>
-          </div>
-          <div class="flex items-center space-x-2">
-            <img src="Icons/bone.svg" alt="bone" />
-            <span>J'adopte</span>
-          </div>
-          <div class="flex items-center space-x-2">
-            <img src="Icons/fish.svg" alt="fish" />
-            <span>Guide de l'adoption</span>
-          </div>
-          <div class="flex items-center space-x-2">
-            <img src="Icons/squirrel.svg" alt="squirrel" />
-            <span>Devenir bénévole</span>
-          </div>
+<body class="Roboto">
+    <nav class="bg-[#fffaf7]">
+        <div class="container mx-auto flex justify-between items-center py-3 px-6">
+            <div class="flex items-center space-x-2 text-3xl">
+                <span class="text-2x1">🐾</span>
+                <span class="font-bold text-x1">
+                    Ada<span class="text-[#e26d47]">opte</span>
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8 font-bold">
+                <div class="flex items-center space-x-2">
+                    <img src="Icons/house.svg" alt="house" />
+                    <span>Accueil</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <img src="Icons/bone.svg" alt="bone" />
+                    <span>J'adopte</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <img src="Icons/fish.svg" alt="fish" />
+                    <span>Guide de l'adoption</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <img src="Icons/squirrel.svg" alt="squirrel" />
+                    <span>Devenir bénévole</span>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <button class="bg-[#e74c3c] rounded-full hover:bg-[#b32b02] px-5 py-2 shadow text-white transition">
+                    Faire un don 🫶
+                </button>
+            </div>
         </div>
-        <div class="flex items-center">
-          <button
-            class="bg-[#e74c3c] rounded-full hover:bg-[#b32b02] px-5 py-2 shadow text-white transition"
-          >
-            Faire un don 🫶
-          </button>
-        </div>
-      </div>
     </nav>
-    <div
-      class="w-screen h-115 bg-[url('images/background.jpg')] bg-cover bg-center opacity-75"
-    >
-      <h1 class="">DONNONS-LEUR AUTANT QU'ILS NOUS APPORTENT</h1>
-    </div>
-  </body>
+<div class="relative w-screen h-[500px] bg-cover bg-center bg-[url('images/background.jpg')]">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
+      DONNONS-LEUR AUTANT QU'ILS NOUS APPORTENT
+    </h1>
+    <p class="max-w-2xl Roboto">
+      Chaque jour, des milliers d’animaux attendent une famille aimante. Trouvez votre compagnon idéal parmi nos animaux disponibles à l’adoption.
+    </p>
+  </div>
+</div>
+
+</body>
+
 </html>
