@@ -1,5 +1,12 @@
 PRAGMA foreign_keys = ON;
-
+DROP TABLE IF EXISTS animal;
+DROP TABLE IF EXISTS animal_type;
+DROP TABLE IF EXISTS breed;
+DROP TABLE IF EXISTS adopter;
+DROP TABLE IF EXISTS volunteer;
+DROP TABLE IF EXISTS FAQs;
+DROP TABLE IF EXISTS shelter;
+DROP TABLE IF EXISTS adoption_file;
 CREATE TABLE animal_type (
     animal_type_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
@@ -16,7 +23,6 @@ CREATE TABLE animal (
     animal_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     age TEXT NOT NULL,
-    type_id INTEGER NOT NULL, -- <- pas clair à quoi il sert car il y a déjà animal_type_id
     animal_type_id INTEGER NOT NULL,
     breed_type_id INTEGER NOT NULL,
     city TEXT NOT NULL,
