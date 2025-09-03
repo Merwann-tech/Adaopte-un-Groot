@@ -18,12 +18,18 @@ async function getOrInitDB() {
 async function getAnimals(info) {
     const db = await getOrInitDB();
     const res = db.exec(`SELECT ${info} FROM animal;`);
-    return res[0].values[0];
+    return res[0].values[1];
 }
 
+async function idToAnimalsType(id) {
+    const db = await getOrInitDB();
+    const res = db.exec(`SELECT name FROM animal_type WHERE animal_type_id = ${id};`);
+    return res[0].values[0]; 
+}
 
 async function displayCardAnimals() {
     let animalInfo = await getAnimals("*")
+    let animalType = await idToAnimalsType(animalInfo[3])
     const resultSearch = document.getElementById("resultSearch")
     const div = document.createElement("div")
     div.innerHTML =
@@ -32,7 +38,7 @@ async function displayCardAnimals() {
       <img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
       <div class="p-10">
       <p class="mb-3 text-lg">
-        Chien
+        ${animalType}
       </p>
       <h1 class="font-bold text-[#8482FF] text-xl mb-3">${animalInfo[1]}</h1>
       <p class="mb-1">Chow-Chow • ${animalInfo[2]}</p>
