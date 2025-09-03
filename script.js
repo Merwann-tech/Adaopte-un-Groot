@@ -18,18 +18,25 @@ async function getOrInitDB() {
 async function getAnimals(info) {
     const db = await getOrInitDB();
     const res = db.exec(`SELECT ${info} FROM animal;`);
-    return res[0].values[1];
+    return res[0].values[6];
 }
 
-async function idToAnimalsType(id) {
+async function idToAnimalsType(idAnimalType) {
     const db = await getOrInitDB();
-    const res = db.exec(`SELECT name FROM animal_type WHERE animal_type_id = ${id};`);
+    const res = db.exec(`SELECT name FROM animal_type WHERE animal_type_id = ${idAnimalType};`);
+    return res[0].values[0]; 
+}
+
+async function idToAnimalsBreed(idAnimalBreed) {
+    const db = await getOrInitDB();
+    const res = db.exec(`SELECT name FROM breed WHERE breed_id = ${idAnimalBreed};`);
     return res[0].values[0]; 
 }
 
 async function displayCardAnimals() {
     let animalInfo = await getAnimals("*")
     let animalType = await idToAnimalsType(animalInfo[3])
+    let animalBreed = await idToAnimalsBreed(animalInfo[4])
     const resultSearch = document.getElementById("resultSearch")
     const div = document.createElement("div")
     div.innerHTML =
@@ -41,7 +48,7 @@ async function displayCardAnimals() {
         ${animalType}
       </p>
       <h1 class="font-bold text-[#8482FF] text-xl mb-3">${animalInfo[1]}</h1>
-      <p class="mb-1">Chow-Chow • ${animalInfo[2]}</p>
+      <p class="mb-1">${animalBreed} • ${animalInfo[2]}</p>
       <p class="mb-6">${animalInfo[5]}</p>
       <p class="mb-6">${animalInfo[7]}</p>
       <button class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
