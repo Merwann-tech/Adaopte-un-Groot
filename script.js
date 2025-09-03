@@ -15,10 +15,10 @@ async function getOrInitDB() {
     }
 }
 
-async function getAnimals(info) {
+async function getAnimals(id) {
     const db = await getOrInitDB();
-    const res = db.exec(`SELECT ${info} FROM animal;`);
-    return res[0].values[6];
+    const res = db.exec(`SELECT * FROM animal WHERE animal_id = ${id};`);
+    return res[0].values[0];
 }
 
 async function idToAnimalsType(idAnimalType) {
@@ -33,16 +33,22 @@ async function idToAnimalsBreed(idAnimalBreed) {
     return res[0].values[0]; 
 }
 
-async function displayCardAnimals() {
-    let animalInfo = await getAnimals("*")
+async function getAnimalsType() {
+    const db = await getOrInitDB();
+    const res = db.exec(`SELECT name FROM animal_type;`);
+    console.log(res[0].values);
+    return res[0].values;
+}
+
+async function displayCardAnimals(id) {
+    let animalInfo = await getAnimals(id)
     let animalType = await idToAnimalsType(animalInfo[3])
     let animalBreed = await idToAnimalsBreed(animalInfo[4])
     const resultSearch = document.getElementById("resultSearch")
     const div = document.createElement("div")
+    div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg"
     div.innerHTML =
-        `<div class="flex flex-wrap flex-row justify-center gap-4">
-    <div class="basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg">
-      <img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
+    `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
       <div class="p-10">
       <p class="mb-3 text-lg">
         ${animalType}
@@ -52,19 +58,20 @@ async function displayCardAnimals() {
       <p class="mb-6">${animalInfo[5]}</p>
       <p class="mb-6">${animalInfo[7]}</p>
       <button class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
-      </div>
-    </div>`
-    console.log(animalInfo)
+    `
     resultSearch.appendChild(div)
 }
 
-displayCardAnimals()
 
 
 
-async function getAnimalsType() {
-    const db = await getOrInitDB();
-    const res = db.exec(`SELECT * FROM animal_type;`);
-    console.log(res[0].values);
-    return res.values;
+for (let i = 1 ; i<=2 ; i++){
+for (let i = 1 ; i<=8 ; i++) {
+ displayCardAnimals(i)
 }
+}
+
+
+ getAnimalsType()
+
+
