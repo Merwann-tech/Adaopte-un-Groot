@@ -47,3 +47,25 @@ INSERT INTO breed(name,animal_type_id) VALUES
 
 INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
 ('Petoche', '36 ans', '10','5','Nantes', '44300','Petoche se sert de ses bras pour enlacer ses amis, à défaut de lancer son caca.', 'images/Petoche.jpg');
+
+-- Ajout Touklakos
+
+INSERT INTO animal_type(name) VALUES
+('Cheval');
+
+INSERT INTO breed(name, animal_type_id) VALUES
+('Falabella', '6');
+
+INSERT INTO animal(name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Touklakos', '12 ans', '11','6','Nantes', '44100','Touklakos adore galoper dans les hautes herbes.', 'images/Petoche.jpg');
+
+-- Ajout Patapouf
+
+INSERT INTO animal_type(name) VALUES
+('Panda');
+
+INSERT INTO breed(name, animal_type_id) VALUES
+('Panda Roux', '7');
+
+INSERT INTO animal(name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Patapouf', '2 ans', '12','7','Nantes', '44200','Patapouf est chou comme tout mais il a une tête à connaître le goût des feutres.', 'images/Petoche.jpg');
