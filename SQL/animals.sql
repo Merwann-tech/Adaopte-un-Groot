@@ -24,3 +24,9 @@ INSERT INTO breed(name,animal_type_id) VALUES
 ('Cochon d''Inde', '4'),
 ('Lapin nain brun', '3'),
 ('Chien Samoyed', '1');
+
+INSERT INTO breed(name,animal_type_id) VALUES
+('Chat du Bengal', '2');
+
+INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Groot', '12 ans', '9','2','Nantes', '44800','Groot adore gueuler dans sa gamelle mais Groot est une petite (grosse) boule d''amour. Il adore manger, ronfler et crier.', 'images/Groot.jpg');
