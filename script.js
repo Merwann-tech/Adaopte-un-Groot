@@ -3,54 +3,69 @@ let searchButton = document.getElementById("searchButton")
 let db = null
 
 async function getOrInitDB() {
-    if (db === null) {
-        const SQL = await initSqlJs({
-            locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/${file}`
-        });
+  if (db === null) {
+    const SQL = await initSqlJs({
+      locateFile: (file) =>
+        `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/${file}`,
+    });
 
-        const response = await fetch("SQL/adaopte.db");
-        const buffer = await response.arrayBuffer();
-        db = new SQL.Database(new Uint8Array(buffer));
-        return db;
-    }else{
-        return db;        
-    }
+    const response = await fetch("SQL/adaopte.db");
+    const buffer = await response.arrayBuffer();
+    db = new SQL.Database(new Uint8Array(buffer));
+    return db;
+  } else {
+    return db;
+  }
 }
 
 async function getAnimals(id) {
-    const db = await getOrInitDB();
-    const res = db.exec(`SELECT * FROM animal WHERE animal_id = ${id};`);
-    return res[0].values[0];
+  const db = await getOrInitDB();
+  const res = db.exec(`SELECT * FROM animal WHERE animal_id = ${id};`);
+  return res[0].values[0];
 }
 
 async function idToAnimalsType(idAnimalType) {
-    const db = await getOrInitDB();
-    const res = db.exec(`SELECT name FROM animal_type WHERE animal_type_id = ${idAnimalType};`);
-    return res[0].values[0]; 
+  const db = await getOrInitDB();
+  const res = db.exec(
+    `SELECT name FROM animal_type WHERE animal_type_id = ${idAnimalType};`
+  );
+  return res[0].values[0];
 }
 
 async function idToAnimalsBreed(idAnimalBreed) {
-    const db = await getOrInitDB();
-    const res = db.exec(`SELECT name FROM breed WHERE breed_id = ${idAnimalBreed};`);
-    return res[0].values[0]; 
+  const db = await getOrInitDB();
+  const res = db.exec(
+    `SELECT name FROM breed WHERE breed_id = ${idAnimalBreed};`
+  );
+  return res[0].values[0];
 }
 
 async function getAnimalsType() {
-    const db = await getOrInitDB();
-    const res = db.exec(`SELECT name FROM animal_type;`);
-    console.log(res[0].values);
-    return res[0].values;
+  const db = await getOrInitDB();
+  const res = db.exec(`SELECT name FROM animal_type;`);
+  console.log(res[0].values);
+  return res[0].values;
 }
 
+async function displayAnimalsType() {
+  let animalTypeList = await getAnimalsType();
+  const animalType = document.getElementById("animal_type");
+  for (let i = 0; i < animalTypeList.length; i++) {
+    const option = document.createElement("option");
+    option.innerText = animalTypeList[i][0];
+    animalType.appendChild(option);
+  }
+}
+displayAnimalsType();
+
 async function displayCardAnimals(id) {
-    let animalInfo = await getAnimals(id)
-    let animalType = await idToAnimalsType(animalInfo[3])
-    let animalBreed = await idToAnimalsBreed(animalInfo[4])
-    const resultSearch = document.getElementById("resultSearch")
-    const div = document.createElement("div")
-    div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg"
-    div.innerHTML =
-    `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
+  let animalInfo = await getAnimals(id);
+  let animalType = await idToAnimalsType(animalInfo[3]);
+  let animalBreed = await idToAnimalsBreed(animalInfo[4]);
+  const resultSearch = document.getElementById("resultSearch");
+  const div = document.createElement("div");
+  div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg";
+  div.innerHTML = `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
       <div class="p-10">
       <p class="mb-3 text-lg">
         ${animalType}
@@ -60,8 +75,8 @@ async function displayCardAnimals(id) {
       <p class="mb-6">${animalInfo[5]}</p>
       <p class="mb-6">${animalInfo[7]}</p>
       <button class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
-    `
-    resultSearch.appendChild(div)
+    `;
+  resultSearch.appendChild(div);
 }
 
 
