@@ -96,7 +96,7 @@ async function search() {
     resultSearch.innerHTML = null;
     if (locationInput.value == "") {
       if (animalType.value === "Tous les animaux") {
-        for (let i = 1; i <= 8; i++) displayCardAnimals(i);
+        for (let i = 1; i <= 10; i++) displayCardAnimals(i);
       } else {
         let id = await animalsTypeToId(animalType.value);
         let resultSearchId = await searchByAnimalTypeId(id);

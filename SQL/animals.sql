@@ -1,3 +1,5 @@
+--Base de donnée MVP
+
 INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
 ('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
 ('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
@@ -25,8 +27,23 @@ INSERT INTO breed(name,animal_type_id) VALUES
 ('Lapin nain brun', '3'),
 ('Chien Samoyed', '1');
 
+
+--Ajout Groot
+
 INSERT INTO breed(name,animal_type_id) VALUES
 ('Chat du Bengal', '2');
 
 INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
 ('Groot', '12 ans', '9','2','Nantes', '44800','Groot adore gueuler dans sa gamelle mais Groot est une petite (grosse) boule d''amour. Il adore manger, ronfler et crier.', 'images/Groot.jpg');
+
+
+--Ajout Petoche
+
+INSERT INTO animal_type(name) VALUES
+('Singe');
+
+INSERT INTO breed(name,animal_type_id) VALUES
+('Gibbon', '5');
+
+INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Petoche', '36 ans', '10','5','Nantes', '44300','Petoche se sert de ses bras pour enlacer ses amis, à défaut de lancer son caca.', 'images/Petoche.jpg');
