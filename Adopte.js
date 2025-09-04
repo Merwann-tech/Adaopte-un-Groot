@@ -110,3 +110,4 @@ async function searchByAnimalTypeId(id) {
 }
 
 searchButton.addEventListener("click", search);
+
