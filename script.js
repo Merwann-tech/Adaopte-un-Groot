@@ -144,3 +144,4 @@ async function searchByAnimalTypeIdAndCity(id, city) {
 }
 
 searchButton.addEventListener("click", search);
+
