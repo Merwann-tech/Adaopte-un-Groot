@@ -1,3 +1,5 @@
+let searchButton = document.getElementById("searchButton")
+
 let db = null
 
 async function getOrInitDB() {
@@ -75,3 +77,9 @@ for (let i = 1 ; i<=8 ; i++) {
  getAnimalsType()
 
 
+function search(){
+
+
+}
+
+searchButton.addEventListener ("click", getAnimalsType)
