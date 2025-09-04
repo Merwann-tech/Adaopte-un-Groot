@@ -1,8 +1,8 @@
-let searchButton = document.getElementById("searchButton")
-const animalType = document.getElementById("animal_type")
-const resultSearch = document.getElementById("resultSearch")
+let searchButton = document.getElementById("searchButton");
+const animalType = document.getElementById("animal_type");
+const resultSearch = document.getElementById("resultSearch");
 
-let db = null
+let db = null;
 
 async function getOrInitDB() {
   if (db === null) {
@@ -70,8 +70,7 @@ async function displayCardAnimals(id) {
   let animalInfo = await getAnimals(id);
   let animalType = await idToAnimalsType(animalInfo[3]);
   let animalBreed = await idToAnimalsBreed(animalInfo[4]);
-  
-  
+
   const div = document.createElement("div");
   div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg";
   div.innerHTML = `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
@@ -88,20 +87,25 @@ async function displayCardAnimals(id) {
   resultSearch.appendChild(div);
 }
 
+async function search() {
+  resultSearch.innerHTML = null;
 
-async function search(){
-resultSearch.innerHTML = null
-let id = await animalsTypeToId(animalType.value)
-let resultSearchId = await searchByAnimalTypeId(id)
-for (let i = 0 ; i< resultSearchId.length ; i++) {
-
-displayCardAnimals(resultSearchId[i])
-}
+  if (animalType.value === "Tous les animaux") {
+    for (let i = 1; i <= 8; i++) displayCardAnimals(i);
+  } else {
+    let id = await animalsTypeToId(animalType.value);
+    let resultSearchId = await searchByAnimalTypeId(id);
+    for (let i = 0; i < resultSearchId.length; i++) {
+      displayCardAnimals(resultSearchId[i]);
+    }
+  }
 }
 async function searchByAnimalTypeId(id) {
   const db = await getOrInitDB();
-  const res = db.exec(`SELECT animal_id FROM animal WHERE animal_type_id = ${id};`);
+  const res = db.exec(
+    `SELECT animal_id FROM animal WHERE animal_type_id = ${id};`
+  );
   return res[0].values;
 }
 
-searchButton.addEventListener ("click", search)
+searchButton.addEventListener("click", search);
