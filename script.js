@@ -1,4 +1,6 @@
 let searchButton = document.getElementById("searchButton")
+const animalType = document.getElementById("animal_type")
+const resultSearch = document.getElementById("resultSearch")
 
 let db = null
 
@@ -32,6 +34,14 @@ async function idToAnimalsType(idAnimalType) {
   return res[0].values[0];
 }
 
+async function animalsTypeToId(animalType) {
+  const db = await getOrInitDB();
+  const res = db.exec(
+    `SELECT animal_type_id FROM animal_type WHERE name = "${animalType}";`
+  );
+  return res[0].values[0];
+}
+
 async function idToAnimalsBreed(idAnimalBreed) {
   const db = await getOrInitDB();
   const res = db.exec(
@@ -43,13 +53,11 @@ async function idToAnimalsBreed(idAnimalBreed) {
 async function getAnimalsType() {
   const db = await getOrInitDB();
   const res = db.exec(`SELECT name FROM animal_type;`);
-  console.log(res[0].values);
   return res[0].values;
 }
 
 async function displayAnimalsType() {
   let animalTypeList = await getAnimalsType();
-  const animalType = document.getElementById("animal_type");
   for (let i = 0; i < animalTypeList.length; i++) {
     const option = document.createElement("option");
     option.innerText = animalTypeList[i][0];
@@ -62,7 +70,8 @@ async function displayCardAnimals(id) {
   let animalInfo = await getAnimals(id);
   let animalType = await idToAnimalsType(animalInfo[3]);
   let animalBreed = await idToAnimalsBreed(animalInfo[4]);
-  const resultSearch = document.getElementById("resultSearch");
+  
+  
   const div = document.createElement("div");
   div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg";
   div.innerHTML = `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
@@ -80,21 +89,19 @@ async function displayCardAnimals(id) {
 }
 
 
+async function search(){
+resultSearch.innerHTML = null
+let id = await animalsTypeToId(animalType.value)
+let resultSearchId = await searchByAnimalTypeId(id)
+for (let i = 0 ; i< resultSearchId.length ; i++) {
 
-
-for (let i = 1 ; i<=2 ; i++){
-for (let i = 1 ; i<=8 ; i++) {
- displayCardAnimals(i)
+displayCardAnimals(resultSearchId[i])
 }
 }
-
-
- getAnimalsType()
-
-
-function search(){
-
-
+async function searchByAnimalTypeId(id) {
+  const db = await getOrInitDB();
+  const res = db.exec(`SELECT animal_id FROM animal WHERE animal_type_id = ${id};`);
+  return res[0].values;
 }
 
-searchButton.addEventListener ("click", getAnimalsType)
+searchButton.addEventListener ("click", search)
