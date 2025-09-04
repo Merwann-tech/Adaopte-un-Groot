@@ -69,3 +69,42 @@ INSERT INTO breed(name, animal_type_id) VALUES
 
 INSERT INTO animal(name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
 ('Patapouf', '2 ans', '12','7','Nantes', '44200','Patapouf est chou comme tout mais il a une tête à connaître le goût des feutres.', 'images/Petoche.jpg');
+
+-- Ajout PLEIN DANIMAUX
+
+INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Ajax ', '1 an', '13', '11', 'Nantes', '44000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Balourd', '48 ans', '14', '8', 'Nantes', '44000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Kumo', '3 ans', '15', '11', 'Nantes', '44000', 'Coco est un petit lapin plein d’énergie, très doux et parfait pour un foyer aimant et paisible.', 'images/chan-swan-NKyl19P5IHg-unsplash.jpg'),
+('Boursemol', '4 ans', '16', '11', 'Nantes', '44000', 'Rex est un chien loyal et majestueux, idéal pour une personne douce et patiente qui aime les câlins silencieux.', 'images/alan-king-KZv7w34tluA-unsplash.jpg'),
+('Malinx', '7 ans', '17', '11', 'Nantes', '44000', 'Luna adore les coins ensoleillés et les siestes à vos côtés. Elle vous offrira tout l’amour d’un regard félin.', 'images/jae-park-7GX5aICb5i4-unsplash.jpg'),
+('Nemo', '3 mois', '18', '9', 'Nantes', '44000', 'Biscuit est tout petit mais plein de vie ! Il aime les légumes croquants et les instants de douceur en famille.', 'images/yosei-g-OVgE3m4MHKM-unsplash.jpg'),
+('Sushi', '5 mois', '19', '9', 'Nantes', '44000', 'Rio est discret, mignon comme tout, et adore explorer les petits coins de la maison avec délicatesse.', 'images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg'),
+('Milktooth', '2 ans', '20', '9', 'Nantes', '44000', 'Ruby est une boule de neige pleine d’amour ! Elle adore les promenades et les câlins par temps frais.', 'images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg'),
+('Soap', '4 ans', '16', '11', 'Nantes', '44000', 'Rex est un chien loyal et majestueux, idéal pour une personne douce et patiente qui aime les câlins silencieux.', 'images/alan-king-KZv7w34tluA-unsplash.jpg'),
+('Balou', '7 ans', '17', '11', 'Nantes', '44000', 'Luna adore les coins ensoleillés et les siestes à vos côtés. Elle vous offrira tout l’amour d’un regard félin.', 'images/jae-park-7GX5aICb5i4-unsplash.jpg'),
+('Marin', '3 mois', '18', '9', 'Nantes', '44000', 'Biscuit est tout petit mais plein de vie ! Il aime les légumes croquants et les instants de douceur en famille.', 'images/yosei-g-OVgE3m4MHKM-unsplash.jpg'),
+('Eagly', '5 mois', '19', '9', 'Nantes', '44000', 'Rio est discret, mignon comme tout, et adore explorer les petits coins de la maison avec délicatesse.', 'images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg'),
+('Cormoch', '2 ans', '20', '9', 'Nantes', '44000', 'Ruby est une boule de neige pleine d’amour ! Elle adore les promenades et les câlins par temps frais.', 'images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg');
+
+
+INSERT INTO animal_type (name) VALUES
+('Ours'),
+('Poisson'),
+('Oiseau'),
+('Felin');
+
+INSERT INTO breed(name,animal_type_id) VALUES
+('Lion','11'),
+('Ours polaire', '8'),
+('Tigre', '11'),
+('Léopard', '11'),
+('Lynx', '11'),
+('Poisson-clown', '9'),
+('Saumon', '9'),
+('Requin blanc', '9'),
+('Anguille','9'),
+('Ours brun', '8'),
+('Poisson rouge', '9'),
+('Aigle royal', '10'),
+('Corbeau', '10');
