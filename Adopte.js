@@ -1,8 +1,13 @@
 const searchButton = document.getElementById("searchButton");
 const animalType = document.getElementById("animal_type");
 const resultSearch = document.getElementById("resultSearch");
+const locationInput = document.getElementById("location");
+let homePageSearch = sessionStorage.getItem("homePageSearch");
 
 let db = null;
+
+
+
 
 async function getOrInitDB() {
     if (db === null) {
@@ -63,6 +68,7 @@ async function displayAnimalsType() {
         option.innerText = animalTypeList[i][0];
         animalType.appendChild(option);
     }
+    homePage()
 }
 displayAnimalsType();
 
@@ -87,19 +93,33 @@ async function displayCardAnimals(id) {
     resultSearch.appendChild(div);
 }
 
-async function search() {
+async function search(currentLocationInput, CurrentAnimalType) {
     resultSearch.innerHTML = null;
-    if (animalType.value === "Tous les animaux") {
-        for (let i = 1; i <= 8; i++) displayCardAnimals(i);
+    if (currentLocationInput == "") {
+        if (CurrentAnimalType === "Tous les animaux") {
+            for (let i = 1; i <= 10; i++) displayCardAnimals(i);
+        } else {
+            let id = await animalsTypeToId(CurrentAnimalType);
+            let resultSearchId = await searchByAnimalTypeId(id);
+            for (let i = 0; i < resultSearchId.length; i++) {
+                displayCardAnimals(resultSearchId[i]);
+            }
+        }
     } else {
-        let id = await animalsTypeToId(animalType.value);
-        let resultSearchId = await searchByAnimalTypeId(id);
-        for (let i = 0; i < resultSearchId.length; i++) {
-            displayCardAnimals(resultSearchId[i]);
+        if (CurrentAnimalType == "Tous les animaux") {
+            let resultSearchByCity = await searchByCity(currentLocationInput);
+            for (let i = 0; i < resultSearchByCity.length; i++) {
+                displayCardAnimals(resultSearchByCity[i]);
+            }
+        } else {
+            let id = await animalsTypeToId(CurrentAnimalType);
+            let resultSearchIdAndCity = await searchByAnimalTypeIdAndCity(id, currentLocationInput);
+            for (let i = 0; i < resultSearchIdAndCity.length; i++) {
+                displayCardAnimals(resultSearchIdAndCity[i]);
+            }
         }
     }
 }
-
 
 async function searchByAnimalTypeId(id) {
     const db = await getOrInitDB();
@@ -109,5 +129,34 @@ async function searchByAnimalTypeId(id) {
     return res[0].values;
 }
 
-searchButton.addEventListener("click", search);
+async function searchByCity(city) {
+    const db = await getOrInitDB();
+    const res = db.exec(`SELECT animal_id FROM animal WHERE city = "${city}";`);
+    return res[0].values;
+}
+
+async function searchByAnimalTypeIdAndCity(id, city) {
+    const db = await getOrInitDB();
+    const res = db.exec(
+        `SELECT animal_id FROM animal WHERE city = "${city}" AND animal_type_id = ${id};`
+    );
+    return res[0].values;
+}
+
+searchButton.addEventListener("click", () => {
+    search(locationInput.value, animalType.value)
+});
+
+
+
+
+function homePage() {
+    if (homePageSearch == "true") {
+        sessionStorage.setItem("homePageSearch", "false");
+        animalType.value = sessionStorage.getItem("animalType");
+        locationInput.value = sessionStorage.getItem("locationInput");
+        search(locationInput.value, animalType.value)
+    }
+}
+
 
