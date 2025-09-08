@@ -5,6 +5,9 @@ const animalType = document.getElementById("animal_type");
 let db = null;
 
 searchButton.addEventListener("click", ()=>{
+    sessionStorage.setItem("homePageSearch", true);
+    sessionStorage.setItem("animalType", `${animalType.value}`);
+    sessionStorage.setItem("locationInput", `${locationInput.value}`);
     window.location.href = "Adopte.html";
 });
 
