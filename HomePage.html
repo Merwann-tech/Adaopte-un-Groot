@@ -1,259 +1,389 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/sql-wasm.js"></script>
+    <script src="HomePage.js" defer></script>
+    <link rel="stylesheet" href="HomePage.css" />
+    <title>Adaopte un Groot</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.13.0/sql-wasm.js"></script>
-  <script src="HomePage.js" defer></script>
-  <link rel="stylesheet" href="style.css" />
-  <title>Adaopte un Groot</title>
-</head>
-
-<body class="Roboto bg-[#f9f9f9]">
-  <nav class="bg-[#fff]">
-    <a href="https://cataas.com/cat">
-    <div class="container mx-auto flex justify-between items-center py-3 px-6">
-      <div class="flex items-center space-x-2 text-3xl">
-        <span class="text-2x1">🐾</span>
-        <span class="font-bold text-x1">
-          Ada<span class="text-[#e26d47]">opte</span>
-        </span>
-      </div>
-      </a>
-
-      <div class="hidden md:flex items-center space-x-8 font-bold">
-        <a href="HomePage.html">
-          <div class="flex items-center space-x-2 cursor-pointer">
-            <img src="Icons/house.svg" alt="house" />
-            <span>Accueil</span>
-          </div>
+  <body class="Roboto bg-[#f9f9f9]">
+    <nav class="bg-white shadow-md">
+      <div
+        class="container mx-auto flex justify-between items-center py-3 px-6"
+      >
+        <a
+          href="https://cataas.com/cat"
+          class="flex items-center space-x-2 text-3xl"
+        >
+          <span class="text-2x1">🐾</span>
+          <span class="font-bold text-x1"
+            >Ada<span class="text-[#e26d47]">opte</span></span
+          >
         </a>
-        <a href="Adopte.html">
+        <div class="hidden md:flex items-center space-x-8 font-bold">
+          <a
+            href="HomePage.html"
+            class="flex items-center space-x-2 cursor-pointer"
+          >
+            <img src="Icons/house.svg" alt="house" /><span>Accueil</span>
+          </a>
+          <a
+            href="Adopte.html"
+            class="flex items-center space-x-2 cursor-pointer"
+          >
+            <img src="Icons/bone.svg" alt="bone" /><span>J'adopte</span>
+          </a>
           <div class="flex items-center space-x-2 cursor-pointer">
-            <img src="Icons/bone.svg" alt="bone" />
-            <span>J'adopte</span>
+            <img src="Icons/fish.svg" alt="fish" /><span
+              >Guide de l'adoption</span
+            >
           </div>
-        </a>
-        <div class="flex items-center space-x-2 cursor-pointer">
-          <img src="Icons/fish.svg" alt="fish" />
-          <span>Guide de l'adoption</span>
+          <div class="flex items-center space-x-2 cursor-pointer">
+            <img src="Icons/squirrel.svg" alt="squirrel" /><span
+              >Devenir bénévole</span
+            >
+          </div>
         </div>
-        <div class="flex items-center space-x-2 cursor-pointer">
-          <img src="Icons/squirrel.svg" alt="squirrel" />
-          <span>Devenir bénévole</span>
-        </div>
-      </div>
-      <div class="flex items-center">
-        <button
-          class="bg-[#e74c3c] rounded-full active:bg-[#b32b02] cursor-pointer px-5 py-2 shadow text-white transition">
-          Faire un don 🫶
-        </button>
-      </div>
-    </div>
-  </nav>
-  <section class="relative w-full h-[500px] bg-cover bg-center bg-[url('images/background.jpg')]">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
-        DONNONS-LEUR AUTANT QU'ILS NOUS APPORTENT
-      </h1>
-      <p class="max-w-2xl Roboto">
-        Chaque jour, des milliers d’animaux attendent une famille aimante.
-        Trouvez votre compagnon idéal parmi nos animaux disponibles à
-        l’adoption.
-      </p>
-    </div>
-  </section>
-  <div class="relative max-w-4xl mx-auto -mt-10">
-    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-4">
 
-      <div class=" basis-sm flex flex-col w-full md:w-1/3">
-        <label for="animal_type" class="font-semibold mb-1">Type d'animal</label>
-        <select id="animal_type" class="border rounded-lg p-2 w-full">
-          <option>Tous les animaux</option>
-        </select>
-      </div>
-
-      <div class="basis-sm flex flex-col w-full md:w-1/3">
-        <label for="location" class="font-semibold mb-1">Localisation</label>
-        <input id="location" type="text" placeholder="Votre ville" class="border rounded-lg p-2 w-full" />
-      </div>
-
-      <div class="basis-sm flex flex-col w-full md:w-auto">
-        <label for="location" class="font-semibold mb-1">‎</label>
-        <button
-          id="searchButton"  class="cursor-pointer bg-gray-800 text-white font-semibold px-6 py-2 rounded-full shadow active:bg-[#4d4c4b] transition">
-          Rechercher 🔍
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <section class="relative z-10 flex flex-col items-center justify-center h-full text-center mt-20 ">
-    <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
-      NOS ANIMAUX À ADOPTER
-    </h1>
-    <p class="max-w-2xl Roboto">
-      Découvrez en images tous nos animaux qui attendent une famille aimante.
-      Chaque photo raconte une histoire et un espoir.
-    </p>
-  </section>
-
-  <section class="grid grid-cols-[repeat(4,250px)] gap-4 grid-rows-[repeat(3,250px)] justify-center flex mt-10 ">
-    <img class="rounded-lg row-start-1 row-end-3 w-full h-full object-cover"
-      src="images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-span-1 w-full h-full object-cover" src="images/chan-swan-NKyl19P5IHg-unsplash.jpg"
-      alt="" />
-    <img class="rounded-lg row-start-1 row-end-3 col-start-3 col-end-4 w-full h-full object-cover"
-      src="images/jae-park-7GX5aICb5i4-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-start-1 row-end-2 col-start-4 w-full h-full object-cover"
-      src="images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-start-3 row-end-4 col-start-1 w-full h-full object-cover"
-      src="images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-start-2 row-end-4 col-start-2 w-full h-full object-cover"
-      src="images/alan-king-KZv7w34tluA-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-start-3 row-end-4 col-start-3 w-full h-full object-cover"
-      src="images/yosei-g-OVgE3m4MHKM-unsplash.jpg" alt="" />
-    <img class="rounded-lg row-start-2 row-end-4 col-start-4 w-full h-full object-cover"
-      src="images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg" alt="" />
-  </section>
-
-  <section class="flex justify-center ">
-    <button id="allAnimals" class="bg-black text-white rounded-full px-5 py-2 mt-10 active:bg-[#4d4c4b] cursor-pointer">
-      Voir tous les animaux
-    </button>
-  </section>
-  <section>
-    <div class="bg-white mt-10">
-      <div class="relative z-10 flex flex-col items-center justify-center h-full text-center">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
-          <br>
-          Comment ça marche
-        </h1>
-        <p class="max-w-2xl Roboto">
-          Adopter un animal est un engagement sérieux et à long terme. Voici
-          notre processus d'adoption en quelques étapes simples.
-        </p>
-      </div>
-      <div class="flex flex-row justify-center text-center gap-8 p-20">
-        <div class="basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-10">
-          <p class="text-5xl">🔍</p>
-          <br />
-          <h1 class="font-bold text-xl">1. Trouvez votre compagnon</h1>
-          <br />
-          <p>
-            Parcourez notre base de données d'animaux disponibles et utilisez
-            nos filtres pour trouver celui qui correspond à votre mode de vie.
-          </p>
-        </div>
-        <div class="basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-10">
-          <p class="text-5xl">📝</p>
-          <br />
-          <h1 class="font-bold text-xl">2. Remplissez une demande</h1>
-          <br />
-          <p>
-            Soumettez votre formulaire d'adoption pour l'animal qui vous
-            intéresse. Nous examinons chaque demande avec soin.
-          </p>
-        </div>
-        <div class="basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-10">
-          <p class="text-5xl">👋</p>
-          <br />
-          <h1 class="font-bold text-xl">3. Rencontrez l'animal</h1>
-          <br />
-          <p>
-            Visitez le refuge pour rencontrer l'animal et voir si vous êtes
-            compatibles. C'est une étape essentielle du processus.
-          </p>
-        </div>
-        <div class="basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-10">
-          <p class="text-5xl">🏠</p>
-          <br />
-          <h1 class="font-bold text-xl">4. Bienvenue à la maison</h1>
-          <br />
-          <p>
-            Une fois votre demande approuvée, vous pouvez accueillir votre
-            nouvel ami chez vous. Nous restons disponibles pour vous
-            conseiller.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="">
-      <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-black mt-10">
-        <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
-          Prêt⸱e à changer une vie ?
-        </h1>
-        <p class="max-w-2xl Roboto">
-          Adoptez, partagez, soutenez... Chaque geste compte. Que vous ouvriez
-          votre foyer ou votre coeur, vous pouvez offrir une seconde chance à
-          un animal abandonné.
-        </p>
-        <div class="flex justify-center items-center gap-6 p-10">
-          <button class=" cursor-pointer bg-black rounded-full px-5 py-2 shadow text-white transition active:bg-[#4d4c4b]">
-            Adopter un animal
-          </button>
-          <button class="cursor-pointer bg-[#ff0000] rounded-full px-5 py-2 shadow text-white transition active:bg-[#b32b02]">
+        <div class="flex items-center">
+          <button
+            class="bg-[#e74c3c] rounded-full active:bg-[#b32b02] cursor-pointer px-5 py-2 shadow text-white transition"
+          >
             Faire un don 🫶
           </button>
-          <button class="cursor-pointer bg-[#089106] rounded-full px-5 py-2 shadow text-white transition active:bg-[#1dbd1a]">
-            Devenir bénévole
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barre de navigation mobile en bas -->
+    <div
+      class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md flex justify-around items-center p-2 md:hidden z-50"
+    >
+      <a href="HomePage.html" class="flex flex-col items-center text-sm">
+        <img src="Icons/house.svg" alt="Accueil" class="w-6 h-6" />
+        <span>Accueil</span>
+      </a>
+      <a href="Adopte.html" class="flex flex-col items-center text-sm">
+        <img src="Icons/bone.svg" alt="J'adopte" class="w-6 h-6" />
+        <span>J'adopte</span>
+      </a>
+      <a href="#" class="flex flex-col items-center text-sm">
+        <img src="Icons/fish.svg" alt="Guide" class="w-6 h-6" />
+        <span>Guide</span>
+      </a>
+      <a href="#" class="flex flex-col items-center text-sm">
+        <img src="Icons/squirrel.svg" alt="Bénévole" class="w-6 h-6" />
+        <span>Bénévole</span>
+      </a>
+    </div>
+
+    <section
+      class="relative w-full h-[500px] bg-cover bg-center bg-[url('images/background.jpg')]"
+    >
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div
+        class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white"
+      >
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
+          DONNONS-LEUR AUTANT QU'ILS NOUS APPORTENT
+        </h1>
+        <p class="max-w-2xl Roboto">
+          Chaque jour, des milliers d’animaux attendent une famille aimante.
+          Trouvez votre compagnon idéal parmi nos animaux disponibles à
+          l’adoption.
+        </p>
+      </div>
+    </section>
+    <div class="relative max-w-4xl mx-auto -mt-10">
+      <div
+        class="bg-white rounded-xl shadow-lg p-6 flex flex-col md:flex-row items-center gap-4"
+      >
+        <div class="flex flex-col w-full md:w-1/3">
+          <label for="animal_type" class="font-semibold mb-1"
+            >Type d'animal</label
+          >
+          <select id="animal_type" class="border rounded-lg p-2 w-full">
+            <option>Tous les animaux</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-full md:w-1/3">
+          <label for="location" class="font-semibold mb-1">Localisation</label>
+          <input
+            id="location"
+            type="text"
+            placeholder="Votre ville"
+            class="border rounded-lg p-2 w-full"
+          />
+        </div>
+
+        <div class="flex flex-col w-full md:w-auto">
+          <button
+            id="searchButton"
+            class="w-full md:w-auto cursor-pointer bg-gray-800 text-white font-semibold px-6 py-2 rounded-full shadow active:bg-[#4d4c4b] transition"
+          >
+            Rechercher 🔍
           </button>
         </div>
       </div>
     </div>
-  </section>
-  <section>
-    <footer>
-      <div class="bg-[#333] flex flex-row justify-center gap-80 p-10">
-        <div class="basis-sm">
-          <h1 class="Amatic text-[#e26d47] text-2xl">ADAOPTE <br /></h1>
-          <p class="Roboto text-[#eee] mt-5">
-            Notre mission est de trouver des foyers aimants pour chaque animal
-            abandonné et de promouvoir le bien-être animal.
-          </p>
-          <div class="bg-[#333] flex flex-row justify-center gap-4 p-10">
-            <img src="Icons/facebook.svg" alt="facebook" class="p-2 bg-[#555] rounded-full">
-            <img src="Icons/instagram.svg" alt="instagram" class="p-2 bg-[#555] rounded-full">
-            <img src="Icons/linkedin.svg" alt="linkedin" class="p-2 bg-[#555] rounded-full">
-            <img src="Icons/twitch.svg" alt="twitch" class="p-2 bg-[#555] rounded-full">
-          </div>
-        </div>
-        <div class="basis-sm">
-          <h1 class="Amatic text-[#e26d47] text-2xl">
-            INFORMATIONS UTILES <br />
-          </h1>
-          <div class="Roboto text-[#aaa] font-normal mt-5">
-            <p class="mb-2">FAQS <br /></p>
-            <p class="mb-2">Conseils d'adoption <br /></p>
-            <p class="mb-2">Nous contacter <br /></p>
-            <p class="mb-2">Mentions légales</p>
-          </div>
-        </div>
-        <div class="basis-sm">
-          <h1 class="Amatic text-[#e26d47] text-2xl">CONTACT <br /></h1>
-          <p class="Roboto text-[#eee] mt-5">
-            116 Rue du Faubourg Saint-Martin <br />
-            75010 Paris, France <br />
-            Email: contact@adaopte.fr <br />
-            Tél: +33 1 23 45 67 89
-          </p>
-        </div>
-      </div>
-      <hr class="border-[#444] border-x" />
-      <div class="bg-[#333]">
-        <p class="text-[#888] text-center p-7">
-          © 2025 Adaopte. Tous droits réservés. <br>
-          Ce site a été développé dans le cadre d'un projet pour ADA Tech School.
-        </p>
-      </div>
-    </footer>
-  </section>
-</body>
 
+    <section
+      class="relative z-10 flex flex-col items-center justify-center h-full text-center mt-20"
+    >
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
+        NOS ANIMAUX À ADOPTER
+      </h1>
+      <p class="max-w-2xl Roboto">
+        Découvrez en images tous nos animaux qui attendent une famille aimante.
+        Chaque photo raconte une histoire et un espoir.
+      </p>
+    </section>
+
+
+<section class="mt-10 p-15">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+
+    <!-- Image 1 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-80 lg:row-start-1 lg:row-end-3 lg:h-150 object-cover" 
+      src="images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 2 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-64 lg:row-span-1 lg:h-75 object-cover"
+      src="images/chan-swan-NKyl19P5IHg-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 3 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-80 lg:row-start-1 lg:row-end-3 lg:col-start-3 lg:h-150 object-cover"
+      src="images/jae-park-7GX5aICb5i4-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 4 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-64 lg:row-start-1 lg:row-end-2 lg:col-start-4 lg:h-75 object-cover"
+      src="images/melanie-kreutz-IFnknR2Mv5o-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 5 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-64 lg:row-start-3 lg:row-end-4 lg:col-start-1 lg:h-75 object-cover"
+      src="images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 6 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-80 lg:row-start-2 lg:row-end-4 lg:col-start-2 lg:h-150 object-cover"
+      src="images/alan-king-KZv7w34tluA-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 7 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-64 lg:row-start-3 lg:row-end-4 lg:col-start-3 lg:h-75 object-cover"
+      src="images/yosei-g-OVgE3m4MHKM-unsplash.jpg"
+      alt=""
+    />
+
+    <!-- Image 8 -->
+    <img
+      class="rounded-lg w-full h-64 md:h-80 lg:row-start-2 lg:row-end-4 lg:col-start-4 lg:h-150 object-cover"
+      src="images/peri-stojnic-5Vr_RVPfbMI-unsplash.jpg"
+      alt=""
+    />
+
+  </div>
+</section>
+
+
+    <section class="flex justify-center">
+      <button
+        id="allAnimals"
+        class="bg-black text-white rounded-full px-5 py-2 mt-10 active:bg-[#4d4c4b] cursor-pointer"
+      >
+        Voir tous les animaux
+      </button>
+    </section>
+    <section>
+      <div class="bg-white mt-10">
+        <div
+          class="relative z-10 flex flex-col items-center justify-center h-full text-center"
+        >
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
+            <br />
+            Comment ça marche
+          </h1>
+          <p class="max-w-2xl Roboto">
+            Adopter un animal est un engagement sérieux et à long terme. Voici
+            notre processus d'adoption en quelques étapes simples.
+          </p>
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-center text-center gap-6 md:gap-8 p-4 md:p-10"
+        >
+          <div
+            class="lg:basis-sm md:basis-3xs shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-6 md:p-10"
+          >
+            <p class="text-5xl">🔍</p>
+            <br />
+            <h1 class="font-bold text-xl">1. Trouvez votre compagnon</h1>
+            <br />
+            <p>
+              Parcourez notre base de données d'animaux disponibles et utilisez
+              nos filtres pour trouver celui qui correspond à votre mode de vie.
+            </p>
+          </div>
+          <div
+            class="lg:basis-sm md:basis-3xs shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-6 md:p-10"
+          >
+            <p class="text-5xl">📝</p>
+            <br />
+            <h1 class="font-bold text-xl">2. Remplissez une demande</h1>
+            <br />
+            <p>
+              Soumettez votre formulaire d'adoption pour l'animal qui vous
+              intéresse. Nous examinons chaque demande avec soin.
+            </p>
+          </div>
+          <div
+            class="lg:basis-sm md:basis-3xs shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-6 md:p-10"
+          >
+            <p class="text-5xl">👋</p>
+            <br />
+            <h1 class="font-bold text-xl">3. Rencontrez l'animal</h1>
+            <br />
+            <p>
+              Visitez le refuge pour rencontrer l'animal et voir si vous êtes
+              compatibles. C'est une étape essentielle du processus.
+            </p>
+          </div>
+          <div
+            class="lg:basis-sm md:basis-3xs shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg p-6 md:p-10"
+          >
+            <p class="text-5xl">🏠</p>
+            <br />
+            <h1 class="font-bold text-xl">4. Bienvenue à la maison</h1>
+            <br />
+            <p>
+              Une fois votre demande approuvée, vous pouvez accueillir votre
+              nouvel ami chez vous. Nous restons disponibles pour vous
+              conseiller.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="">
+        <div
+          class="relative z-10 flex flex-col items-center justify-center h-full text-center text-black mt-10"
+        >
+          <h1 class="text-3xl md:text-5xl font-bold mb-4 Amatic">
+            Prêt⸱e à changer une vie ?
+          </h1>
+          <p class="max-w-2xl Roboto">
+            Adoptez, partagez, soutenez... Chaque geste compte. Que vous ouvriez
+            votre foyer ou votre coeur, vous pouvez offrir une seconde chance à
+            un animal abandonné.
+          </p>
+          <div
+            class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 p-4 md:p-10 w-full max-w-4xl"
+          >
+            <button
+              class="w-full md:w-auto cursor-pointer bg-black rounded-full px-5 py-2 shadow text-white transition active:bg-[#4d4c4b]"
+            >
+              Adopter un animal
+            </button>
+            <button
+              class="w-full md:w-auto cursor-pointer bg-[#ff0000] rounded-full px-5 py-2 shadow text-white transition active:bg-[#b32b02]"
+            >
+              Faire un don 🫶
+            </button>
+            <button
+              class="w-full md:w-auto cursor-pointer bg-[#089106] rounded-full px-5 py-2 shadow text-white transition active:bg-[#1dbd1a]"
+            >
+              Devenir bénévole
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <footer>
+        <div
+          class="bg-[#333] flex flex-col md:flex-row justify-center gap-10 lg:gap-80 md:gap-10 p-6 md:p-10"
+        >
+          <div class="lg:basis-sm md:basis-3xs">
+            <h1 class="Amatic text-[#e26d47] text-2xl">ADAOPTE <br /></h1>
+            <p class="Roboto text-[#eee] mt-5">
+              Notre mission est de trouver des foyers aimants pour chaque animal
+              abandonné et de promouvoir le bien-être animal.
+            </p>
+            <div class="bg-[#333] flex flex-row justify-center gap-4 p-10">
+              <img
+                src="Icons/facebook.svg"
+                alt="facebook"
+                class="p-2 bg-[#555] rounded-full"
+              />
+              <img
+                src="Icons/instagram.svg"
+                alt="instagram"
+                class="p-2 bg-[#555] rounded-full"
+              />
+              <img
+                src="Icons/linkedin.svg"
+                alt="linkedin"
+                class="p-2 bg-[#555] rounded-full"
+              />
+              <img
+                src="Icons/twitch.svg"
+                alt="twitch"
+                class="p-2 bg-[#555] rounded-full"
+              />
+            </div>
+          </div>
+          <div class="lg:basis-sm md:basis-3xs">
+            <h1 class="Amatic text-[#e26d47] text-2xl">
+              INFORMATIONS UTILES <br />
+            </h1>
+            <div class="Roboto text-[#aaa] font-normal mt-5">
+              <p class="mb-2">FAQS <br /></p>
+              <p class="mb-2">Conseils d'adoption <br /></p>
+              <p class="mb-2">Nous contacter <br /></p>
+              <p class="mb-2">Mentions légales</p>
+            </div>
+          </div>
+          <div class="lg:basis-sm md:basis-3xs">
+            <h1 class="Amatic text-[#e26d47] text-2xl">CONTACT <br /></h1>
+            <p class="Roboto text-[#eee] mt-5">
+              116 Rue du Faubourg Saint-Martin <br />
+              75010 Paris, France <br />
+              Email: contact@adaopte.fr <br />
+              Tél: +33 1 23 45 67 89
+            </p>
+          </div>
+        </div>
+        <hr class="border-[#444] border-x" />
+        <div class="bg-[#333]">
+          <p class="text-[#888] text-center p-7">
+            © 2025 Adaopte. Tous droits réservés. <br />
+            Ce site a été développé dans le cadre d'un projet pour ADA Tech
+            School.
+          </p>
+        </div>
+      </footer>
+    </section>
+  </body>
 </html>
