@@ -1,6 +1,7 @@
 const searchButton = document.getElementById("searchButton");
 const allAnimals = document.getElementById("allAnimals");
 const animalType = document.getElementById("animal_type");
+const locationInput = document.getElementById("location");
 
 let db = null;
 
