@@ -109,7 +109,7 @@ async function displayCardAnimals(id) {
 
 async function search() {
     let endPage = nbAnimalsPerPage * currentPage
-    let startPage = 0 + nbAnimalsPerPage * (currentPage - 1)
+    let startPage = nbAnimalsPerPage * (currentPage - 1)
     resultSearch.innerHTML = null;
     if (locationInput.value == "") {
         if (animalType.value === "Tous les animaux") {
@@ -197,9 +197,6 @@ PreviousButton.addEventListener("click", () => {
     displayButton()
 });
 
-Button1.addEventListener("click", () => {});
-Button2.addEventListener("click", () => {});
-Button3.addEventListener("click", () => {});
 
 function displayButton(){
     nextButton.style.display =''
@@ -244,4 +241,3 @@ function displayButton(){
 }
 
 
-getAllAnimals()
