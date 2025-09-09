@@ -14,6 +14,7 @@ let homePageSearch = sessionStorage.getItem("homePageSearch");
 const nbAnimalsPerPage = 8
 let currentPage = 1
 let maxPage = null
+let nbResult = null
 
 let db = null;
 
@@ -115,11 +116,13 @@ async function search() {
         if (animalType.value === "Tous les animaux") {
             let allAnimals = await getAllAnimals()
             maxPage = Math.ceil(allAnimals.length/nbAnimalsPerPage)
+            nbResult = allAnimals.length
             for (let i = startPage + 1; i <= endPage; i++) displayCardAnimals(i);
         } else {
             let id = await animalsTypeToId(animalType.value);
             let resultSearchId = await searchByAnimalTypeId(id);
             maxPage = Math.ceil(resultSearchId.length/nbAnimalsPerPage)
+            nbResult = resultSearchId.length
             for (let i = startPage; i < endPage; i++) {
                 displayCardAnimals(resultSearchId[i]);
             }
@@ -128,6 +131,7 @@ async function search() {
         if (animalType.value === "Tous les animaux") {
             let resultSearchByCity = await searchByCity(locationInput.value);
             maxPage = Math.ceil(resultSearchByCity.length/nbAnimalsPerPage)
+            nbResult = resultSearchByCity.length
             for (let i = startPage; i < endPage; i++) {
                 displayCardAnimals(resultSearchByCity[i]);
             }
@@ -135,6 +139,7 @@ async function search() {
             let id = await animalsTypeToId(animalType.value);
             let resultSearchIdAndCity = await searchByAnimalTypeIdAndCity(id, locationInput.value);
             maxPage = Math.ceil(resultSearchIdAndCity.length/nbAnimalsPerPage)
+            nbResult = resultSearchIdAndCity.length
             for (let i = startPage; i < endPage; i++) {
                 displayCardAnimals(resultSearchIdAndCity[i]);
             }
