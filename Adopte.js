@@ -109,7 +109,7 @@ async function displayCardAnimals(id) {
     `;
     resultSearch.appendChild(div);
     let meetBtn = document.getElementById(`${id}`)
-    meetBtn.addEventListener("click",buttonMeet)
+    meetBtn.addEventListener("click", buttonMeet)
 }
 
 async function search() {
@@ -119,39 +119,49 @@ async function search() {
     if (locationInput.value == "") {
         if (animalType.value === "Tous les animaux") {
             let allAnimals = await getAllAnimals()
-            maxPage = Math.ceil(allAnimals.length/nbAnimalsPerPage)
+            maxPage = Math.ceil(allAnimals.length / nbAnimalsPerPage)
             nbResult = allAnimals.length
-            for (let i = startPage + 1; i <= endPage; i++) displayCardAnimals(i);
+            for (let i = startPage + 1; i <= endPage; i++) {
+                if (i <= nbResult) {
+                    displayCardAnimals(i)
+                }
+            };
         } else {
             let id = await animalsTypeToId(animalType.value);
             let resultSearchId = await searchByAnimalTypeId(id);
-            maxPage = Math.ceil(resultSearchId.length/nbAnimalsPerPage)
+            maxPage = Math.ceil(resultSearchId.length / nbAnimalsPerPage)
             nbResult = resultSearchId.length
             for (let i = startPage; i < endPage; i++) {
-                displayCardAnimals(resultSearchId[i]);
+                if (i < nbResult) {
+                    displayCardAnimals(resultSearchId[i]);
+                }
             }
         }
     } else {
         if (animalType.value === "Tous les animaux") {
             let resultSearchByCity = await searchByCity(locationInput.value);
-            maxPage = Math.ceil(resultSearchByCity.length/nbAnimalsPerPage)
+            maxPage = Math.ceil(resultSearchByCity.length / nbAnimalsPerPage)
             nbResult = resultSearchByCity.length
             for (let i = startPage; i < endPage; i++) {
-                displayCardAnimals(resultSearchByCity[i]);
+                if (i < nbResult) {
+                    displayCardAnimals(resultSearchByCity[i]);
+                }
             }
         } else {
             let id = await animalsTypeToId(animalType.value);
             let resultSearchIdAndCity = await searchByAnimalTypeIdAndCity(id, locationInput.value);
-            maxPage = Math.ceil(resultSearchIdAndCity.length/nbAnimalsPerPage)
+            maxPage = Math.ceil(resultSearchIdAndCity.length / nbAnimalsPerPage)
             nbResult = resultSearchIdAndCity.length
             for (let i = startPage; i < endPage; i++) {
-                displayCardAnimals(resultSearchIdAndCity[i]);
+                if (i < nbResult) {
+                    displayCardAnimals(resultSearchIdAndCity[i]);
+                }
             }
         }
     }
-    if (nbResult>1){
-    nbResultDisplay.innerText = `${nbResult} animaux trouvés`
-    }else{
+    if (nbResult > 1) {
+        nbResultDisplay.innerText = `${nbResult} animaux trouvés`
+    } else {
         nbResultDisplay.innerText = `${nbResult} animal trouvé`
     }
 }
@@ -186,7 +196,7 @@ function homePage() {
         animalType.value = sessionStorage.getItem("animalType");
         locationInput.value = sessionStorage.getItem("locationInput");
         searchButton.click()
-    }else{
+    } else {
         searchButton.click()
     }
 }
@@ -219,49 +229,49 @@ resetbutton.addEventListener("click", async () => {
     displayButton()
 });
 
-function displayButton(){
-    nextButton.style.display =''
-    PreviousButton.style.display =''
-    Button1.innerText = currentPage-1
+function displayButton() {
+    nextButton.style.display = ''
+    PreviousButton.style.display = ''
+    Button1.innerText = currentPage - 1
     Button2.innerText = currentPage
-    Button3.innerText = currentPage+1
-    Button1.style.display =''
-    Button2.style.display =''
-    Button3.style.display =''
+    Button3.innerText = currentPage + 1
+    Button1.style.display = ''
+    Button2.style.display = ''
+    Button3.style.display = ''
     Button1.className = 'px-3 py-2 leading-tight rounded-sm text-[#fe6e39] bg-white '
     Button2.className = 'px-3 py-2 leading-tight rounded-sm text-[#fe6e39] bg-white '
     Button3.className = 'px-3 py-2 leading-tight rounded-sm text-[#fe6e39] bg-white '
-    if (currentPage == maxPage){
-        Button1.innerText = currentPage-2
-        Button2.innerText = currentPage-1
+    if (currentPage == maxPage) {
+        Button1.innerText = currentPage - 2
+        Button2.innerText = currentPage - 1
         Button3.innerText = currentPage
-        nextButton.style.display ='none'
+        nextButton.style.display = 'none'
         Button3.className = 'bg-[#fe6e39] px-3 py-2 rounded-sm text-white '
     }
-    if (currentPage == 1){
+    if (currentPage == 1) {
         Button1.innerText = currentPage
-        Button2.innerText = currentPage+1
-        Button3.innerText = currentPage+2
-        PreviousButton.style.display ='none'
+        Button2.innerText = currentPage + 1
+        Button3.innerText = currentPage + 2
+        PreviousButton.style.display = 'none'
         Button1.className = 'bg-[#fe6e39] px-3 py-2 rounded-sm text-white '
     }
-    if ( 1<currentPage && currentPage<maxPage) {
+    if (1 < currentPage && currentPage < maxPage) {
         Button2.className = 'bg-[#fe6e39] px-3 py-2 rounded-sm text-white '
     }
-    if(maxPage == 1){
-        Button2.style.display ='none'
-        Button3.style.display ='none'
+    if (maxPage == 1) {
+        Button2.style.display = 'none'
+        Button3.style.display = 'none'
     }
-    if(maxPage == 2){
-        if (currentPage == 1){
-            Button3.style.display ='none'
-        }else{
-            Button1.style.display ='none'
+    if (maxPage == 2) {
+        if (currentPage == 1) {
+            Button3.style.display = 'none'
+        } else {
+            Button1.style.display = 'none'
         }
     }
 }
 
-async function buttonMeet(event){
+async function buttonMeet(event) {
     let animalInfo = await getAnimals(event.target.id);
     let animalType = await idToAnimalsType(animalInfo[3]);
     console.log(`Vous avez sélectionné un ${animalType} qui s'appelle ${animalInfo[1]}`)
