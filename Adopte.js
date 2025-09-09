@@ -105,9 +105,11 @@ async function displayCardAnimals(id) {
       <p class="mb-1">${animalBreed} • ${animalInfo[2]}</p>
       <p class="mb-6">${animalInfo[5]}</p>
       <p class="mb-6">${animalInfo[7]}</p>
-      <button class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
+      <button id="${id}" class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
     `;
     resultSearch.appendChild(div);
+    let meetBtn = document.getElementById(`${id}`)
+    meetBtn.addEventListener("click",buttonMeet)
 }
 
 async function search() {
@@ -259,4 +261,9 @@ function displayButton(){
     }
 }
 
+async function buttonMeet(event){
+    let animalInfo = await getAnimals(event.target.id);
+    let animalType = await idToAnimalsType(animalInfo[3]);
+    console.log(`Vous avez sélectionné un ${animalType} qui s'appelle ${animalInfo[1]}`)
 
+}
