@@ -7,6 +7,8 @@ const PreviousButton = document.getElementById("PreviousButton");
 const Button1 = document.getElementById("Button1");
 const Button2 = document.getElementById("Button2");
 const Button3 = document.getElementById("Button3");
+const nbResultDisplay = document.getElementById("nbresult");
+const resetbutton = document.getElementById("resetbutton");
 
 let homePageSearch = sessionStorage.getItem("homePageSearch");
 
@@ -145,6 +147,11 @@ async function search() {
             }
         }
     }
+    if (nbResult>1){
+    nbResultDisplay.innerText = `${nbResult} animaux trouvés`
+    }else{
+        nbResultDisplay.innerText = `${nbResult} animal trouvé`
+    }
 }
 
 async function searchByAnimalTypeId(id) {
@@ -202,6 +209,13 @@ PreviousButton.addEventListener("click", () => {
     displayButton()
 });
 
+resetbutton.addEventListener("click", async () => {
+    animalType.value = "Tous les animaux"
+    locationInput.value = ""
+    currentPage = 1
+    await search()
+    displayButton()
+});
 
 function displayButton(){
     nextButton.style.display =''
