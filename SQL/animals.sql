@@ -108,3 +108,30 @@ INSERT INTO breed(name,animal_type_id) VALUES
 ('Poisson rouge', '9'),
 ('Aigle royal', '10'),
 ('Corbeau', '10');
+
+
+INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg'),
+('Charlie', '5 ans', '1', '1', 'Lille', '59000', 'Charlie est un petit chien calme et affectueux qui adore les balades tranquilles et les caresses sur le canapé.', 'images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg');
+
+
+INSERT INTO animal (name, age, breed_type_id, animal_type_id, city, zipcode, description, image) VALUES
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg'),
+('Mia', '2 ans', '2', '2', 'Strasbourg', '67000', 'Mia est une boule de tendresse curieuse et joueuse, toujours prête à ronronner près de vous.', 'images/manja-vitolic-gKXKBY-C-Dk-unsplash.jpg');
