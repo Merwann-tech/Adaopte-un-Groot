@@ -8,3 +8,22 @@
 .Roboto {
   font-family: "Roboto", sans-serif;
 }
+
+
+/* @keyframes spin-once {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+button:hover {
+  animation: spin-once 0.5s linear 1;
+}
+
+img:hover {
+  animation: spin-once 0.5s linear 1;
+} */
