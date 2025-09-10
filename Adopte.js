@@ -44,17 +44,13 @@ async function getAllAnimals() {
 
 async function getAnimals(id) {
     const db = await getOrInitDB();
-    const res = db.exec(`SELECT * FROM animal WHERE animal_id = ${id};`);
+    const res = db.exec(`SELECT animal.*, animal_type.name AS type_name, breed.name AS breed_name FROM animal
+                        JOIN animal_type ON animal.animal_type_id = animal_type.animal_type_id
+                        JOIN breed ON animal.breed_type_id = breed.breed_id
+                        WHERE animal.animal_id = ${id};`);
     return res[0].values[0];
 }
 
-async function idToAnimalsType(idAnimalType) {
-    const db = await getOrInitDB();
-    const res = db.exec(
-        `SELECT name FROM animal_type WHERE animal_type_id = ${idAnimalType};`
-    );
-    return res[0].values[0];
-}
 
 async function animalsTypeToId(animalType) {
     const db = await getOrInitDB();
@@ -64,13 +60,6 @@ async function animalsTypeToId(animalType) {
     return res[0].values[0];
 }
 
-async function idToAnimalsBreed(idAnimalBreed) {
-    const db = await getOrInitDB();
-    const res = db.exec(
-        `SELECT name FROM breed WHERE breed_id = ${idAnimalBreed};`
-    );
-    return res[0].values[0];
-}
 
 async function getAnimalsType() {
     const db = await getOrInitDB();
@@ -91,18 +80,16 @@ displayAnimalsType();
 
 async function displayCardAnimals(id) {
     let animalInfo = await getAnimals(id);
-    let animalType = await idToAnimalsType(animalInfo[3]);
-    let animalBreed = await idToAnimalsBreed(animalInfo[4]);
 
     const div = document.createElement("div");
     div.className = "basis-sm shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded-lg";
     div.innerHTML = `<img class="h-70 w-full object-cover object-[50%_50%]" src=${animalInfo[8]} alt="">
       <div class="p-10">
       <p class="mb-3 text-lg">
-        ${animalType}
+        ${animalInfo[9]}
       </p>
       <h1 class="font-bold text-[#8482FF] text-xl mb-3">${animalInfo[1]}</h1>
-      <p class="mb-1">${animalBreed} • ${animalInfo[2]}</p>
+      <p class="mb-1">${animalInfo[10]} • ${animalInfo[2]}</p>
       <p class="mb-6">${animalInfo[5]}</p>
       <p class="mb-6">${animalInfo[7]}</p>
       <button id="${id}" class="mb-3 bg-[#333333] text-white font-semibold px-6 py-4 rounded-full shadow active:bg-[#4d4c4b] transition">Rencontrer</button>
@@ -273,7 +260,5 @@ function displayButton() {
 
 async function buttonMeet(event) {
     let animalInfo = await getAnimals(event.target.id);
-    let animalType = await idToAnimalsType(animalInfo[3]);
-    console.log(`Vous avez sélectionné un ${animalType} qui s'appelle ${animalInfo[1]}`)
-
+    console.log(`Vous avez sélectionné un ${animalInfo[9]} qui s'appelle ${animalInfo[1]}`)
 }
