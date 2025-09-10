@@ -17,7 +17,6 @@ const nbAnimalsPerPage = 8
 let currentPage = 1
 let maxPage = null
 let nbResult = null
-
 let db = null;
 
 async function getOrInitDB() {
